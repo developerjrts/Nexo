@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import { Box, Link } from "@mui/material";
 
 const Home = () => {
   return (
-    <div>
-      <Link to={"/sign-in"}>Sign In</Link>
-      <Link to={"/sign-up"}>Sign Up</Link>
-    </div>
+    <Box>
+      <Link href={"/sign-in"}>Sign In</Link>
+      <Link href={"/sign-up"}>Sign Up</Link>
+    </Box>
   );
 };
 
