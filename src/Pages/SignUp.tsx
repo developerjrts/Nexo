@@ -3,6 +3,8 @@ import { Box, Card, Typography, Button } from "@mui/material";
 import TextField from "@/Components/TextField";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios, { isAxiosError } from "axios";
+import { url } from "@/constant";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -11,6 +13,30 @@ const SignUp = () => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  const handleSignUp = async () => {
+    try {
+      console.log("calling api");
+
+      const response = await axios.post(
+        `${url}/auth/sign-in`,
+        {
+          username,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+      if (isAxiosError(error)) {
+        const errMessage = error.response?.data.message;
+        alert(errMessage);
+      }
+    }
+  };
 
   return (
     <Box className=" flex flex-col px-4 py-6 items-center justify-center min-h-screen">
@@ -76,7 +102,9 @@ const SignUp = () => {
           label="Password"
           type="password"
         />
-        <Button variant="contained">Sign Up</Button>
+        <Button onClick={handleSignUp} variant="contained">
+          Sign Up
+        </Button>
         <Typography textAlign={"center"}>OR</Typography>
         <Button variant="text" onClick={() => navigate("/sign-in")}>
           Sign In
