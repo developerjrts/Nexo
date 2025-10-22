@@ -3,9 +3,10 @@ import type { user } from "@/types/types";
 import { Avatar, Box, Button } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Profile = () => {
+  const navigate = useNavigate();
   const { username } = useParams();
   const [user, setUser] = useState<user | null>(null);
   const [loading, setLoading] = useState(true);
@@ -13,6 +14,13 @@ const Profile = () => {
   const getUser = async () => {
     try {
       const token = await localStorage.getItem("session_code");
+
+      if (!token) {
+        setLoading(false);
+        navigate("/");
+        return;
+      }
+
       const response = await axios.get(`${url}/user/${username}`, {
         withCredentials: true,
         headers: {

@@ -11,7 +11,13 @@ const MainPage = () => {
 
   const checkAuth = async () => {
     try {
-      const token = localStorage.getItem("session_code");
+      const token = await localStorage.getItem("session_code");
+
+      if (!token) {
+        setLoading(false);
+        setIsLoggedIn(false);
+        return;
+      }
 
       const response = await axios.get(`${url}/auth/check-auth`, {
         withCredentials: true,
@@ -19,7 +25,7 @@ const MainPage = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-
+      setLoading(false);
       console.log(response.data);
 
       if (response.data.status) {

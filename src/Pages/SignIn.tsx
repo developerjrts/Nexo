@@ -27,6 +27,11 @@ const SignIn = () => {
         }
       );
       console.log(response.data);
+
+      if (response.data.status) {
+        navigate(`/${response.data.user.username}`);
+      }
+
       await localStorage.setItem("session_code", response.data.token);
     } catch (error) {
       console.log(error);
