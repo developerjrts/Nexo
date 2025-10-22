@@ -13,7 +13,7 @@ const SignUp = () => {
   const [password, setPassword] = useState<string>("");
 
   return (
-    <Box className=" w-screen py-10 md:py-0 items-center px-4 md:px-0 justify-center flex-col flex">
+    <Box className=" flex flex-col px-4 py-6 items-center justify-center min-h-screen">
       <Typography
         sx={{
           color: "#007bff",
@@ -41,7 +41,7 @@ const SignUp = () => {
         Join the conversation.
       </Typography>
       <Card
-        className="p-4 flex w-full md:w-[350px] mt-6 flex-col gap-4"
+        className="p-4  flex w-full md:w-[350px] mt-6 flex-col gap-4"
         sx={{
           background: "#1e2939 ",
         }}
