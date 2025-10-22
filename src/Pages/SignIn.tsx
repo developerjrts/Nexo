@@ -27,6 +27,7 @@ const SignIn = () => {
         }
       );
       console.log(response.data);
+      await localStorage.setItem("session_code", response.data.token);
     } catch (error) {
       console.log(error);
       if (isAxiosError(error)) {

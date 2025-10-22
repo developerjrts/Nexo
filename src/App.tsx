@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NotFound from "@/Pages/NotFound";
-import Home from "@/Pages/Home";
-import SignIn from "@/Pages/SignIn";
+import MainPage from "@/Pages/MainPage";
 import SignUp from "@/Pages/SignUp";
+import Profile from "@/Pages/Profile";
 
 const App = () => {
   return (
@@ -10,8 +10,8 @@ const App = () => {
       <div className="bg-dark">
         <Routes>
           <Route path="/*" Component={NotFound} />
-          <Route path="/" Component={Home} />
-          <Route path="/sign-in" Component={SignIn} />
+          <Route path="/" Component={MainPage} />
+          <Route path="/:username" Component={Profile} />
           <Route path="/sign-up" Component={SignUp} />
         </Routes>
       </div>
