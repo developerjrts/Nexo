@@ -19,7 +19,7 @@ const SignUp = () => {
       console.log("calling api");
 
       const response = await axios.post(
-        `${url}/auth/sign-in`,
+        `${url}/auth/sign-un`,
         {
           username,
           password,

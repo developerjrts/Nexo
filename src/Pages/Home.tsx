@@ -1,10 +1,14 @@
-import { Box, Link } from "@mui/material";
+import Nav from "@/Components/Nav";
+import Sidebar from "@/Components/Sidebar";
+import { Box } from "@mui/material";
 
 const Home = () => {
   return (
-    <Box>
-      <Link href={"/sign-in"}>Sign In</Link>
-      <Link href={"/sign-up"}>Sign Up</Link>
+    <Box className="flex w-screen h-screen">
+      <Sidebar />
+      <Box>
+        <Nav />
+      </Box>
     </Box>
   );
 };

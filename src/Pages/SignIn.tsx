@@ -29,7 +29,7 @@ const SignIn = () => {
       console.log(response.data);
 
       if (response.data.status) {
-        navigate(`/${response.data.user.username}`);
+        window.location.reload();
       }
 
       await localStorage.setItem("session_code", response.data.token);

@@ -4,12 +4,22 @@ import { Avatar, Box, Button } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import NotFound from "./NotFound";
 
 const Profile = () => {
   const navigate = useNavigate();
   const { username } = useParams();
   const [user, setUser] = useState<user | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const handleLogout = async () => {
+    try {
+      await localStorage.clear();
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getUser = async () => {
     try {
@@ -43,17 +53,13 @@ const Profile = () => {
   if (loading) {
     return (
       <Box className="w-full h-screen flex items-center justify-center">
-        <p>Loading profile...</p>
+        <p>Loading page...</p>
       </Box>
     );
   }
 
   if (!user) {
-    return (
-      <Box className="w-full h-screen flex items-center justify-center">
-        <p>User not found 😕</p>
-      </Box>
-    );
+    return <NotFound />;
   }
 
   return (
@@ -96,7 +102,7 @@ const Profile = () => {
         <Button variant="contained" color="primary">
           Edit Profile
         </Button>
-        <Button variant="outlined" color="error">
+        <Button onClick={handleLogout} variant="outlined" color="error">
           Logout
         </Button>
       </Box>
