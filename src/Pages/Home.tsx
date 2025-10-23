@@ -3,7 +3,12 @@ import { Box } from "@mui/material";
 
 const Home = () => {
   return (
-    <Box className="w-full h-full flex flex-col items-center justify-center">
+    <Box
+      sx={{
+        display: { xs: "none", md: "flex" },
+      }}
+      className="w-full h-full flex  flex-col items-center justify-center"
+    >
       <ChatBubble
         sx={{
           height: 50,

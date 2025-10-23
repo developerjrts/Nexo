@@ -6,7 +6,7 @@ import { Outlet, useLocation } from "react-router-dom";
 const ChatLayout = () => {
   const location = useLocation();
 
-  const isHide = location.pathname.startsWith("/inbox/");
+  const isHide = location.pathname.startsWith("/inbox");
 
   return (
     <Box className="flex w-screen h-screen overflow-hidden">

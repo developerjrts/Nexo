@@ -1,21 +1,18 @@
 import Home from "@/Pages/Home";
-import SignIn from "@/Pages/SignIn";
 import { url } from "@/constant";
-import { CircularProgress } from "@mui/material";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const MainPage = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const checkAuth = async () => {
     try {
       const token = await localStorage.getItem("session_code");
 
       if (!token) {
-        setLoading(false);
-        setIsLoggedIn(false);
+        navigate("/sign-in");
         return;
       }
 
@@ -25,21 +22,16 @@ const MainPage = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setLoading(false);
       console.log(response.data);
 
       if (response.data.status) {
-        setIsLoggedIn(true);
         localStorage.setItem("user", JSON.stringify(response.data.user));
       } else {
-        setIsLoggedIn(false);
         localStorage.clear();
+        navigate("/sign-in");
       }
     } catch (error) {
       console.log("Auth check failed:", error);
-      setIsLoggedIn(false);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -47,15 +39,11 @@ const MainPage = () => {
     checkAuth();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="w-full h-full flex items-center justify-center">
-        <CircularProgress />
-      </div>
-    );
-  }
-
-  return <>{isLoggedIn ? <Home /> : <SignIn />}</>;
+  return (
+    <>
+      <Home />
+    </>
+  );
 };
 
 export default MainPage;
