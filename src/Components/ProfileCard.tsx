@@ -32,6 +32,7 @@ const ProfileCard = () => {
           width: 50,
           height: 50,
         }}
+        src={user?.profilePic}
       />
       <Box className="flex flex-col ">
         <p className="font-medium text-lg">{user?.name}</p>

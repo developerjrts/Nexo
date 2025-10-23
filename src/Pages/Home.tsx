@@ -1,14 +1,19 @@
-import Nav from "@/Components/Nav";
-import Sidebar from "@/Components/Sidebar";
+import { ChatBubble } from "@mui/icons-material";
 import { Box } from "@mui/material";
 
 const Home = () => {
   return (
-    <Box className="flex w-screen h-screen">
-      <Sidebar />
-      <Box>
-        <Nav />
-      </Box>
+    <Box className="w-full h-full flex flex-col items-center justify-center">
+      <ChatBubble
+        sx={{
+          height: 50,
+          width: 50,
+        }}
+      />
+      <h1 className="text-3xl font-semibold mt-5">Welcome to Nexo!</h1>
+      <h1 className="gray">
+        Select contact to from the list to start conversation.
+      </h1>
     </Box>
   );
 };

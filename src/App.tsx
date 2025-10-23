@@ -3,14 +3,19 @@ import NotFound from "@/Pages/NotFound";
 import MainPage from "@/Pages/MainPage";
 import SignUp from "@/Pages/SignUp";
 import Profile from "@/Pages/Profile";
+import ChatLayout from "@/Layouts/ChatLayout";
+import ChatPage from "@/Pages/ChatPage";
 
 const App = () => {
   return (
     <BrowserRouter>
       <div className="bg-dark">
         <Routes>
+          <Route element={<ChatLayout />}>
+            <Route path="/" Component={MainPage} />
+            <Route path="/inbox/:receiverId" Component={ChatPage} />
+          </Route>
           <Route path="/*" Component={NotFound} />
-          <Route path="/" Component={MainPage} />
           <Route path="/:username" Component={Profile} />
           <Route path="/sign-up" Component={SignUp} />
         </Routes>

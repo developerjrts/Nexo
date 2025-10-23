@@ -19,16 +19,23 @@ const SignUp = () => {
       console.log("calling api");
 
       const response = await axios.post(
-        `${url}/auth/sign-un`,
+        `${url}/auth/sign-up`,
         {
           username,
           password,
+          email,
+          name,
         },
         {
           withCredentials: true,
         }
       );
       console.log(response.data);
+      if (response.data.status) {
+        localStorage.setItem("session_code", response.data.token);
+        localStorage.setItem("user", response.data.user);
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
       if (isAxiosError(error)) {

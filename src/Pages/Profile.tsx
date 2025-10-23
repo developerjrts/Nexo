@@ -1,6 +1,6 @@
 import { url } from "@/constant";
 import type { user } from "@/types/types";
-import { Avatar, Box, Button } from "@mui/material";
+import { Avatar, Box, Button, CircularProgress } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -53,7 +53,7 @@ const Profile = () => {
   if (loading) {
     return (
       <Box className="w-full h-screen flex items-center justify-center">
-        <p>Loading page...</p>
+        <CircularProgress />
       </Box>
     );
   }

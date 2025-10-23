@@ -12,12 +12,13 @@ const Nav = () => {
 
   return (
     <AppBar
+      position="static"
       className="bg-gray-800"
       sx={{
         background: "#1e2939",
         boxShadow: "none",
         borderBottom: "1px solid #4a5565 ",
-        width: "75vw",
+        width: "100%",
         display: { xs: "none", md: "block" },
       }}
     >

@@ -1,7 +1,7 @@
 import Home from "@/Pages/Home";
 import SignIn from "@/Pages/SignIn";
 import { url } from "@/constant";
-import { LinearProgress } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -49,8 +49,8 @@ const MainPage = () => {
 
   if (loading) {
     return (
-      <div className="w-screen h-screen flex items-center justify-center">
-        <LinearProgress className="w-[80%]" />
+      <div className="w-full h-full flex items-center justify-center">
+        <CircularProgress />
       </div>
     );
   }
