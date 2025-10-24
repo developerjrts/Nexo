@@ -15,3 +15,27 @@ export interface user {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface message {
+  _id?: string;
+  senderId: {
+    _id: string;
+    name: string;
+    username: string;
+    avatar: string;
+  };
+  receiverId?: {
+    _id: string;
+    name: string;
+    username: string;
+    avatar: string;
+  };
+  chatId?: string;
+  message?: string;
+  type?: "text" | "image" | "video" | "audio" | "file" | "system";
+  mediaUrl?: string;
+  repliedTo?: string;
+  isEdited?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+}
