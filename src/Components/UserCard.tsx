@@ -15,13 +15,7 @@ const UserCard = ({ user }: props) => {
         }}
         className="p-3 w-full cursor-pointer rounded-md flex gap-4"
       >
-        <Avatar
-          sx={{
-            height: 50,
-            width: 50,
-          }}
-          src={user.profilePic}
-        />
+        <Avatar src={user.profilePic} />
         <Box>
           <h1 className="font-medium text-xl">{user.name}</h1>
           <h1 className="font-normal text-md">{user.username}</h1>

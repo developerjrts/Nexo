@@ -22,3 +22,7 @@
 * {
   color: #f5f7f8;
 }
+
+::-webkit-scrollbar {
+  width: 0px;
+}
