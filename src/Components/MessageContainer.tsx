@@ -33,7 +33,9 @@ const MessageContainer = ({ messages, userId }: Props) => {
       )}
 
       {messages.map((msg, i) => {
-        const isSentByCurrentUser = msg.senderId._id === userId;
+        const isSentByCurrentUser =
+          (typeof msg.senderId === "string" && msg.senderId === userId) ||
+          (typeof msg.senderId === "object" && msg.senderId?._id === userId);
 
         return (
           <Box
@@ -42,7 +44,6 @@ const MessageContainer = ({ messages, userId }: Props) => {
               isSentByCurrentUser ? "justify-end" : "justify-start"
             }`}
           >
-            {/* Receiver avatar */}
             {!isSentByCurrentUser && (
               <Avatar
                 src={
@@ -55,7 +56,6 @@ const MessageContainer = ({ messages, userId }: Props) => {
               />
             )}
 
-            {/* Message bubble */}
             <Box
               sx={{
                 backgroundColor: isSentByCurrentUser

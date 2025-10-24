@@ -1,16 +1,23 @@
 import type { user } from "@/types/types";
 import { Avatar, Box, Card, Link } from "@mui/material";
+import { useParams } from "react-router-dom";
 
 interface props {
   user: user;
 }
 
 const UserCard = ({ user }: props) => {
+  const { receiverId } = useParams();
+
   return (
     <Link underline="hover" href={`/inbox/${user._id}`}>
       <Card
         sx={{
-          backgroundColor: "color-mix(in oklab, #135bec 10%, transparent)",
+          // backgroundColor: "color-mix(in oklab, #135bec 10%, transparent)",
+          backgroundColor:
+            receiverId === user._id
+              ? "#2563eb"
+              : "color-mix(in oklab, #135bec 10%, transparent)",
           borderRadius: "10px ",
         }}
         className="p-3 w-full cursor-pointer rounded-md flex gap-4"
